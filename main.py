@@ -27,13 +27,22 @@ while guess != numb or i == 10:
     print(guess1, guess2, guess3)
     guessl = np.array([guess1, guess2, guess3])
     res = [i for i in guessl-numbl if i == 0]
+    res1 = ['0', '0', '0']
+    for i in range(0, 3):
+        if guessl[i] == numbl[i]:
+            res1[i] = guessl[i]
+    print(type(res1))
     pico = [i for i in guessl if i in numbl]
-    if len(res) == 1:
-        print("Fermi")
+    pico = list(pico)
+    a = len(res)
+    pico1 = [i for i in pico if i not in res1]
+    b = len(pico)
+    if len(res) == 2:
+        print("Fermi "*a)
     elif len(res) == 2:
         print("Fermi, Fermi")
-    elif len(pico) == 1:
-        print("Pico")
+    elif len(pico) != 0:
+        print("Pico "*b)
     elif len(pico) == 2:
         print("Pico, Pico")
     else:
