@@ -10,7 +10,7 @@ print(numb)
 first = round((numb - numb%100)/100)
 second = round((numb%100 - numb%10)/10)
 third = numb%10
-numbl = np.array(first, second, third)
+numbl = np.array([first, second, third])
 print(first, second, third)
 print("Please, guess a three digit number.")
 guess = int(input())
@@ -24,10 +24,23 @@ while guess != numb or i == 10:
     guess2 = round((guess % 100 - guess % 10) / 10)
     guess3 = guess % 10
     print(guess1, guess2, guess3)
-    guessl = np.array(guess1, guess2, guess3)
-    res = numbl - guessl
-    if np.product(res) == 0:
-        print("Fico")
-    elif
+    guessl = np.array([guess1, guess2, guess3])
+    res = [i for i in guessl-numbl if i == 0]
+    pico = [i for i in guessl if i in numbl]
+    if len(res) == 0:
+        print("Fermi")
+    elif len(res) == 2:
+        print("Fermi, Fermi")
+    elif len(pico) == 1:
+        print("Pico")
+    elif len(pico) == 2:
+        print("Pico, Pico")
+    else:
+        print("Bagels")
+    guess = int(input())
+if guess == numb:
+    print("Congratulations, you won!")
+else:
+    print("You lost :(")
 
 
