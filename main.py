@@ -14,11 +14,12 @@ numbl = np.array([first, second, third])
 print(first, second, third)
 print("Please, guess a three digit number.")
 guess = int(input())
-i = 0
+i = 1
 while guess != numb or i == 10:
     while guess < 100 or guess > 999:
         print("This isn't three digit number. Please, guess THREE digit number")
         guess = int(input())
+    print("Guess", i)
     i = i + 1
     guess1 = round((guess - guess % 100) / 100)
     guess2 = round((guess % 100 - guess % 10) / 10)
@@ -27,7 +28,7 @@ while guess != numb or i == 10:
     guessl = np.array([guess1, guess2, guess3])
     res = [i for i in guessl-numbl if i == 0]
     pico = [i for i in guessl if i in numbl]
-    if len(res) == 0:
+    if len(res) == 1:
         print("Fermi")
     elif len(res) == 2:
         print("Fermi, Fermi")
